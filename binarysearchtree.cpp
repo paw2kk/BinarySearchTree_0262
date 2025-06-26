@@ -26,63 +26,73 @@ public:
         ROOT = nullptr; // Initializing root to null
     }
 
-void insert(){
-    int x;
-    cout << "Masukkan nilai: ";
-    cin >> x;
-
-    //Step 1 : Allocate memory for the new node
-    Node *newNode = new Node();
-
-    //Step 2 : Assign value to the data field of the new node
-    newNode->info = x;
-
-    //Step 3 : Make the left and right child of the new node point to NULL
-    newNode->leftchild = nullptr;
-    newNode->rightchild = nullptr;
-
-    //Step 4 : Locate the node which will be the parent of the node to be inserted
-    Node *parent = nullptr; 
-    Node *currentnode = nullptr;
-    search(x, parent, currentnode);
-
-    //Step 5  : If parent is NULL (Tree is empty)
-    if (parent == nullptr)
+    void insert()
     {
-        //5a : Mark the new node as root
-        ROOT = newNode;
+        int x;
+        cout << "Masukkan nilai: ";
+        cin >> x;
 
-        //5b : Exit
-        return;
+        // Step 1 : Allocate memory for the new node
+        Node *newNode = new Node();
+
+        // Step 2 : Assign value to the data field of the new node
+        newNode->info = x;
+
+        // Step 3 : Make the left and right child of the new node point to NULL
+        newNode->leftchild = nullptr;
+        newNode->rightchild = nullptr;
+
+        // Step 4 : Locate the node which will be the parent of the node to be inserted
+        Node *parent = nullptr;
+        Node *currentnode = nullptr;
+        search(x, parent, currentnode);
+
+        // Step 5  : If parent is NULL (Tree is empty)
+        if (parent == nullptr)
+        {
+            // 5a : Mark the new node as root
+            ROOT = newNode;
+
+            // 5b : Exit
+            return;
+        }
+
+        // Step 6 : If the value in the data field of new node is less than that of parent
+        if (x < parent->info)
+        {
+            // 6a : Make the left child of parent point to the new node
+            parent->leftchild = newNode;
+
+            // 6b : Exit
+            return;
+        }
+
+        // Step 7 : If the value in the data field of the new node is greater than that of the parent
+        else if (x > parent->info)
+        {
+            // 7a : Make the right child of parent point to the new node
+            parent->rightchild = newNode;
+
+            // 7b : Exit
+            return;
+        }
     }
 
-    //Step 6 : If the value in the data field of new node is less than that of parent
-    if (x < parent->info){
-        //6a : Make the left child of parent point to the new node
-        parent->leftchild = newNode;
+    void search(int element, Node *&parent, Node *&currentnode)
+    {
+        // This function searches the currentNode of the specified Node as well as the current Node of its parent
+        currentNode = ROOT;
+        parent = nullptr;
+        while ((currentNode != nullptr) && (vurrentNofr->info != element))
+        {
+            parent = currentNode;
+            if (element < currentNode->info)
+                currentnode = currentNode->leftchild;
 
-        //6b : Exit
-        return;
+            else
+            currentNode = currentNode->rightchild;
+        }
     }
-
-    //Step 7 : If the value in the data field of the new node is greater than that of the parent
-    else if (x > parent->info){
-        //7a : Make the right child of parent point to the new node
-        parent->rightchild = newNode;
-
-        //7b : Exit
-        return;
-    }
-}
-
-void search(int element, Node *&parent, Node *&currentnode){
-    //This function searches the currentNode of the specified Node as well as the current Node of its parent
-    currentNode = ROOT;
-    parent = nullptr;
-    while ((currentnode != nullptr) && (vurrentNofr->info != element)){
-        
-    }
-}
 
 }
 
