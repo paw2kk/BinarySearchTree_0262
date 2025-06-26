@@ -15,6 +15,10 @@ class node{
     }
 };
 
-int main(){
+class BinaryTree{
     
+}
+
+int main(){
+
 }
