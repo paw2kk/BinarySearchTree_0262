@@ -13,4 +13,8 @@ class node{
         leftchild = nullptr; //Initialoze left child to null
         rightchild = nullptr; //Initialoze left child to null
     }
+};
+
+int main(){
+    
 }
